@@ -1,0 +1,22 @@
+﻿using CasaDoCodigo.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace CasaDoCodigo.Data
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions opt) : base(opt)
+        {
+
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Produto>().HasKey(t => t.Id);
+            modelBuilder.Entity<Cadastro>().HasKey(t => t.Id);
+            modelBuilder.Entity<ItemPedido>().HasKey(t => t.Id);
+            modelBuilder.Entity<Pedido>().HasKey(t => t.Id);
+        }
+    }
+}
